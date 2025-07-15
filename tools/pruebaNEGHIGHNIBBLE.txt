@@ -1,0 +1,13 @@
+main |00| SET R1 , 0xF0
+     |02| SET R2 , 0x0A
+     |04| SET R3 , 0xE1
+     |06| SET R4 , 0xA3
+     |08| DB 0X79
+     |09| DB 0X00
+     |0a| DB 0X7A
+     |0b| DB 0X00
+     |0c| DB 0X7B
+     |0d| DB 0X00
+     |0e| DB 0X7C
+     |0f| DB 0X00
+halt |10| JMP halt

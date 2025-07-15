@@ -1,0 +1,55 @@
+                 main |00| SET R7 , 0xFF
+                      |02| SET R0 , p
+                      |04| SET R1 , 0x10
+                      |06| SET R3 , 0xD1
+                      |08| CALL | R7 | , guardaMaximoDireccion
+                 halt |0a| JMP halt
+guardaMaximoDireccion |0c| PUSH | R7 | , R4
+                      |0e| PUSH | R7 | , R3
+                      |10| PUSH | R7 | , R0
+                      |12| PUSH | R7 | , R1
+                      |14| PUSH | R7 | , R2
+                      |16| PUSH | R7 | , R5
+                      |18| LOAD R6 , [ R0 ]
+                      |1a| MOV R5 , R0
+                      |1c| ADD R1 , R0
+                      |1e| SET R4 , 0X01
+                      |20| ADD R5 , R4
+                      |22| CMP R5 , R1
+                      |24| JZ fin
+                 loop |26| LOAD R2 , [ R5 ]
+                      |28| CMP R6 , R2
+                      |2a| JC new_max
+                      |2c| JMP next
+              new_max |2e| MOV R6 , R2
+                      |30| JMP next
+                 next |32| ADD R5 , R4
+                      |34| CMP R1 , R5
+                      |36| JZ fin
+                      |38| JMP loop
+                  fin |3a| POP | R7 | , R5
+                      |3c| POP | R7 | , R2
+                      |3e| POP | R7 | , R1
+                      |40| POP | R7 | , R0
+                      |42| POP | R7 | , R3
+                      |44| POP | R7 | , R4
+                      |46| PUSH | R7 | , R6
+                      |48| DB 0x77
+                      |49| DB 0xD1
+                      |4a| RET | R7 |
+                    p |4c| DB 0x01
+                      |4d| DB 0x02
+                      |4e| DB 0x04
+                      |4f| DB 0x08
+                      |50| DB 0x03
+                      |51| DB 0x03
+                      |52| DB 0xA1
+                      |53| DB 0xC0
+                      |54| DB 0xFA
+                      |55| DB 0x40
+                      |56| DB 0x55
+                      |57| DB 0xCC
+                      |58| DB 0xBD
+                      |59| DB 0x45
+                      |5a| DB 0x9A
+                      |5b| DB 0xEE

@@ -1,0 +1,26 @@
+main:
+    SET R1, 0xF0	
+    SET R2, 0x0A
+    SET R3, 0xE1
+    SET R4, 0xA3
+    ; TENGO R1 EN LOS PRIMEROS DB
+    DB 0X79
+    DB 0X00
+    ;TENGO R2 EN LOS SEGUNDOS DB
+    DB 0X7A
+    DB 0X00
+    ;Tengo R3 EN LOS TERCEROS DB
+    DB 0X7B
+    DB 0X00
+    ; Tengo R4 EN LOS CUARTOS DB
+    DB 0X7C
+    DB 0X00
+
+halt:
+	JMP halt
+
+;DB: 0X79 ;01111 001 -->      0111 1001 --> 0X79 --> 121
+;DB: 0X3A
+;DB: 
+;SUMO UNO DIRECTO
+

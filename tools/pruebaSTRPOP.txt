@@ -1,0 +1,8 @@
+main |00| SET R7 , 0xFF
+     |02| SET R1 , 0x10
+     |04| SET R2 , 0xEA
+     |06| PUSH | R7 | , R1
+     |08| PUSH | R7 | , R2
+     |0a| STRPOP | R7 | , 0x30
+     |0c| STRPOP | R7 | , 0x41
+halt |0e| JMP halt

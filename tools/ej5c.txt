@@ -1,0 +1,49 @@
+       main |00| SET R7 , 0xFF
+            |02| SET R0 , p
+            |04| SET R1 , 0x10
+            |06| SET R4 , 0x00
+            |08| CALL | R7 | , cuentaMult4
+       halt |0a| JMP halt
+cuentaMult4 |0c| PUSH | R7 | , R0
+            |0e| PUSH | R7 | , R1
+            |10| PUSH | R7 | , R2
+            |12| PUSH | R7 | , R3
+            |14| PUSH | R7 | , R5
+            |16| PUSH | R7 | , R6
+      ciclo |18| SET R2 , 0x03
+            |1a| SET R3 , 0X00
+            |1c| LOAD R5 , [ R0 ]
+            |1e| SET R6 , 0X01
+            |20| AND R5 , R2
+            |22| CMP R5 , R3
+            |24| JZ yes_mul4
+   next_pos |26| ADD R0 , R6
+            |28| SUB R1 , R6
+            |2a| CMP R1 , R3
+            |2c| JZ fin_funcion
+            |2e| JMP ciclo
+   yes_mul4 |30| ADD R4 , R6
+            |32| JMP next_pos
+fin_funcion |34| POP | R7 | , R6
+            |36| POP | R7 | , R5
+            |38| POP | R7 | , R3
+            |3a| POP | R7 | , R2
+            |3c| POP | R7 | , R1
+            |3e| POP | R7 | , R0
+            |40| RET | R7 |
+          p |42| DB 0x01
+            |43| DB 0x02
+            |44| DB 0x04
+            |45| DB 0x08
+            |46| DB 0x03
+            |47| DB 0x03
+            |48| DB 0xA1
+            |49| DB 0xC0
+            |4a| DB 0xFA
+            |4b| DB 0x40
+            |4c| DB 0x55
+            |4d| DB 0xCC
+            |4e| DB 0xBD
+            |4f| DB 0x45
+            |50| DB 0x9A
+            |51| DB 0xEE
